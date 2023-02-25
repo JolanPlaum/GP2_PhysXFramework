@@ -1,0 +1,5 @@
+_build/
+.vs/
+_intermediate/
+Log.txt
+*.bak
