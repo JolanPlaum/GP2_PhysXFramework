@@ -22,13 +22,12 @@ private:
 
 	enum InputId
 	{
-		MoveLeft,
-		MoveRight,
-		MoveUp,
-		MoveDown,
+		ResetScene,
 	};
 
 	GameObject* m_pCube{ nullptr };
+	XMFLOAT3 m_CubeTranslation{ 0.f, 5.f, 0.f };
+	XMFLOAT3 m_CamPos{ 0.f, 5.f, -20.f }, m_CamLookAt{ 0.f, 0.f, 0.f };
 	PxRigidDynamic* m_pCubeActor{ nullptr };
 
 };
