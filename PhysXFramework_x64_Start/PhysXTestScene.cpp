@@ -66,6 +66,9 @@ void PhysXTestScene::Draw() const
 
 void PhysXTestScene::OnSceneActivated()
 {
+	m_pCube->Translate(m_CubeTranslation.x, m_CubeTranslation.y, m_CubeTranslation.z);
+
+	m_SceneContext.GetCamera()->SetPositionAndLookAt(m_CamPos, m_CamLookAt);
 }
 
 void PhysXTestScene::OnSceneDeactivated()

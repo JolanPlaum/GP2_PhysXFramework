@@ -11,6 +11,7 @@
 #ifdef W01
 #include "TestScene.h"
 #include "PhysXTestScene.h"
+#include "BouncingBallScene.h"
 
 #endif
 
@@ -24,8 +25,9 @@ namespace dae
 	{
 
 #ifdef W01
-		//pSceneManager->AddGameScene(new TestScene());
+		pSceneManager->AddGameScene(new TestScene());
 		pSceneManager->AddGameScene(new PhysXTestScene());
+		pSceneManager->AddGameScene(new BouncingBallScene());
 #endif
 
 #ifdef W02
