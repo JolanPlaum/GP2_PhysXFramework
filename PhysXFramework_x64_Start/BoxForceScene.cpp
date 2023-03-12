@@ -54,6 +54,8 @@ void BoxForceScene::LoadScene()
 {
 	//Reset positions
 	m_pBox->Translate(0.f, 0.f, 0.f);
+	m_pBox->Rotate(0.f, 0.f, 0.f);
+	m_pBox->Scale(1.f, 1.f, 1.f);
 
 	//CAMERA
 	m_SceneContext.GetCamera()->SetPositionAndLookAt(XMFLOAT3{ 0.f, 30.f, -20.f }, XMFLOAT3{ 0.f, 0.f, 0.f });

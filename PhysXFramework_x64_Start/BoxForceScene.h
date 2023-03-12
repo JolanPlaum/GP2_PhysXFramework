@@ -32,7 +32,6 @@ private:
 
 	GameObject* m_pBox{};
 	PxRigidDynamic* m_pBoxActor{};
-	bool _start{ false };
 
 	float m_Force{ 5.f };
 	PxForceMode::Enum m_ForceMode{ PxForceMode::eFORCE };
