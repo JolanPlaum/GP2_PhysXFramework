@@ -5,14 +5,15 @@
 //Change this define to activate/deactive the corresponding scenes
 // W01 - W02  (#define ...)
 
-//#define W01
-#define W02
+#define W01
+//#define W02
 
 #ifdef W01
 #include "TestScene.h"
 #include "PhysXTestScene.h"
 #include "BouncingBallScene.h"
 #include "FrictionTestScene.h"
+#include "BoxForceScene.h"
 
 #endif
 
@@ -33,6 +34,7 @@ namespace dae
 		pSceneManager->AddGameScene(new PhysXTestScene());
 		pSceneManager->AddGameScene(new BouncingBallScene());
 		pSceneManager->AddGameScene(new FrictionTestScene());
+		pSceneManager->AddGameScene(new BoxForceScene());
 #endif
 
 #ifdef W02
