@@ -62,16 +62,16 @@ void TriggerTestScene::InitActor()
 	//TRIGGER LEFT
 	m_pTriggerLeft = pPhysX->createRigidStatic(PxTransform{ -8.f, 0.5f, 0.f });
 	auto pShape = PxRigidActorExt::createExclusiveShape(*m_pTriggerLeft, PxBoxGeometry{ 0.5f, 0.5f, 0.5f }, *pDefaultMaterial);
-	pShape->setFlag(PxShapeFlag::eSIMULATION_SHAPE, false);
-	pShape->setFlag(PxShapeFlag::eTRIGGER_SHAPE, true);
+	pShape->setFlag(PxShapeFlag::eSIMULATION_SHAPE, false); //NO SIMULATION
+	pShape->setFlag(PxShapeFlag::eTRIGGER_SHAPE, true); //BE A TRIGGER (CAN'T BE SIMULATION IF TRIGGER)
 	m_pPhysxScene->addActor(*m_pTriggerLeft);
 
 
 	//TRIGGER RIGHT
 	m_pTriggerRight = pPhysX->createRigidStatic(PxTransform{ 8.f, 0.5f, 0.f });
 	pShape = PxRigidActorExt::createExclusiveShape(*m_pTriggerRight, PxBoxGeometry{ 0.5f, 0.5f, 0.5f }, *pDefaultMaterial);
-	pShape->setFlag(PxShapeFlag::eSIMULATION_SHAPE, false);
-	pShape->setFlag(PxShapeFlag::eTRIGGER_SHAPE, true);
+	pShape->setFlag(PxShapeFlag::eSIMULATION_SHAPE, false); //NO SIMULATION
+	pShape->setFlag(PxShapeFlag::eTRIGGER_SHAPE, true); //BE A TRIGGER (CAN'T BE SIMULATION IF TRIGGER)
 	m_pPhysxScene->addActor(*m_pTriggerRight);
 }
 
@@ -97,11 +97,20 @@ void TriggerTestScene::Update()
 		m_pSphere->GetRigidActor()->is<PxRigidDynamic>()->addTorque({ 0, 0, -force });
 	}
 
+	const float jumpForce{ 10.f };
+	if (m_IsLeftTrigger)
+	{
+		m_pSphere->GetRigidActor()->is<PxRigidDynamic>()->addForce({ 0, jumpForce, 0 }, PxForceMode::eIMPULSE);
+	}
+
 
 	if (m_SceneContext.GetInput()->IsActionTriggered(InputId::ResetScene))
 	{
 		LoadScene();
 	}
+
+	m_IsLeftTrigger = false;
+	m_IsRightTrigger = false;
 }
 
 void TriggerTestScene::Draw() const

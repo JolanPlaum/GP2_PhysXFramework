@@ -81,9 +81,10 @@ void PhysXMeshTestScene::LoadScene()
 {
 	//Reset positions
 	m_pConvecChair->Translate(0.f, 12.f, 0.f);
-	//m_pConvecChair->RotateDegrees(30.f, 0.f, 0.f);
+	m_pConvecChair->RotateDegrees(30.f, 0.f, 0.f);
 
 	m_pTriangleChair->Translate(10.f, 0.f, 0.f);
+	m_pTriangleChair->RotateDegrees(0.f, 0.f, 0.f);
 	m_KinematicPosition = { 10.f, 0.f, 0.f };
 
 

@@ -33,7 +33,7 @@ void AudioTestScene::Initialize()
 	result = pFmod->createStream("Resources/Sounds/Thrones.mp3", FMOD_3D | FMOD_3D_LINEARROLLOFF, nullptr, &pSound);
 	SoundManager::GetInstance()->ErrorCheck(result);
 	
-	result = pFmod->playSound(pSound, nullptr, false, &m_pChannel3D);
+	result = pFmod->playSound(pSound, nullptr, true, &m_pChannel3D);
 	SoundManager::GetInstance()->ErrorCheck(result);
 
 	m_pChannel3D->setMode(FMOD_LOOP_NORMAL);
@@ -190,8 +190,11 @@ void AudioTestScene::Draw() const
 void AudioTestScene::OnSceneActivated()
 {
 	LoadScene();
+	m_pChannel3D->setPaused(false);
 }
 
 void AudioTestScene::OnSceneDeactivated()
 {
+	m_pChannel2D->setPaused(true);
+	m_pChannel3D->setPaused(true);
 }
